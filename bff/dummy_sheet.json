@@ -1,0 +1,21 @@
+{
+    "sheet":{
+        "expiration_date":{
+            "start_date":{"year":2023,"month":4,"date":1},
+            "end_date":{"year":2023,"month":4,"date":15}
+        },
+        "timetable":{
+            "outbound":[
+                {"chitose":{"hour":7,"minute":14},"minami_chitose":{"hour":7,"minute":24},"lab":{"hour":7,"minute":34},"main":{"hour":7,"minute":44}},
+                {"chitose":{"hour":8,"minute":14},"minami_chitose":{"hour":8,"minute":24},"lab":{"hour":8,"minute":34},"main":{"hour":8,"minute":44}},
+                {"chitose":{"hour":9,"minute":14},"minami_chitose":{"hour":9,"minute":24},"lab":{"hour":9,"minute":34},"main":{"hour":9,"minute":44}}
+            ],
+            "inbound":[
+                {"main":{"hour":17,"minute":14},"lab":{"hour":17,"minute":24},"minami_chitose":{"hour":17,"minute":34},"chitose":{"hour":17,"minute":44}},
+                {"main":{"hour":18,"minute":14},"lab":{"hour":18,"minute":24},"minami_chitose":{"hour":18,"minute":34},"chitose":{"hour":18,"minute":44}},
+                {"main":{"hour":19,"minute":14},"lab":{"hour":19,"minute":24},"minami_chitose":{"hour":19,"minute":34},"chitose":{"hour":19,"minute":44}}
+            ]
+
+        }
+    }
+}
