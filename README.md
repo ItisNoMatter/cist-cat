@@ -5,6 +5,8 @@ CIST:ComfortAble Toolkit(仮称) は、CIST生の学生生活をより便利に�
 ここでは、バックエンドの構築を行います。
 フロントエンドの開発は別のレポジトリで行います。
 
+# 構成
+![architecture](https://user-images.githubusercontent.com/41831807/220062681-97edf45e-c1a5-4d5a-9675-9a52a424f194.png)
 
 # 推奨開発環境
 VScodeの拡張機能である[Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers)を利用すると、快適に開発が行えます。Windowsで導入する場合の概要は以下の通りです。
