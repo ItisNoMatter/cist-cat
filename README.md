@@ -12,8 +12,9 @@ CIST:ComfortAble Toolkit(仮称) は、CIST生の学生生活をより便利に�
 # 推奨開発環境
 VScodeの拡張機能である[Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers)を利用すると、快適に開発が行えます。Windowsで導入する場合の概要は以下の通りです。
 1. [Visual Studio Code](https://code.visualstudio.com/)のインストール
-2. [Docker Desktop](https://www.docker.com/products/docker-desktop/)のインストール
-3. [Dev Container拡張](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)をインストール
+2. [WSL2](https://www.kagoya.jp/howto/cloud/container/wsl2_docker/)のインストール(Docker Desktopのインストールまで書いてあります)
+3. [Docker Desktop](https://www.docker.com/products/docker-desktop/)のインストール
+4. [Dev Container拡張](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)をインストール
 
 インストール後にVScodeでこのレポジトリをcloneして開くと、下記のような通知が表示されます。「Reopen in Container」をクリックすると、開発環境が起動します。
 ![devcontainer-demo](https://user-images.githubusercontent.com/41831807/219937556-43b980e2-caf6-4fa8-8f0b-7fea16138995.png)
