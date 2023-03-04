@@ -3,7 +3,7 @@ import json
 
 app = FastAPI()
 
-with open("/workspaces/cist-cat/bff/dummy_sheet.json","r") as f:
+with open("dummy_sheet.json","r") as f:
     dummy_sheet=json.load(f)
 
 @app.get("/")
