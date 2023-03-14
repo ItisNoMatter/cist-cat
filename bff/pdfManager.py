@@ -1,4 +1,5 @@
 import requests
+import os 
 import urllib.parse
 
 class PdfManager:
@@ -11,10 +12,24 @@ class PdfManager:
   # quote = urllib.parse.unquote(tmp)
   # url = "https://www.chitose.ac.jp/uploads/files/"+quote+"_0306-0331.pdf"
   
+  # ファイルの保存先のディレクトリ
+  file_dir = ""
+  
   response = requests.get(url, verify=False)
 
   def get_pdf_from_web(self):
       print(self.response.status_code)
       print(self.url)
-      return "ok"
-    
+      
+      
+      # 新規ファイル作成
+      file = open(os.path.join(self.file_dir,os.path.basename(self.url)),"wb")
+      
+      # ファイルをローカルに書き込む
+      for chunk in self.response.iter_content(100000):
+          file.write(chunk)
+          
+      # ファイル保存完了
+      file.close()
+      print("ダウンロード・ファイル保存完了")
+      return    
