@@ -5,7 +5,8 @@ import requests
 app = FastAPI()
 
 def get_sheet():
-    return app
+    r=requests.get("timetable-parser")
+    return r
 
 with open("dummy_sheet.json","r") as f:
     dummy_sheet=json.load(f)
