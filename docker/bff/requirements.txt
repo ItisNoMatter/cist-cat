@@ -1,1 +1,2 @@
 fastapi==0.92.0
+requests==2.28
