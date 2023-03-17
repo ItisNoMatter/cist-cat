@@ -12,6 +12,7 @@ with open("dummy_sheet.json","r") as f:
 async def root():
     return dummy_sheet
 
+
 @app.get("/getpdf")
 def get_pdf():
     pdfM.get_pdf_from_web()
