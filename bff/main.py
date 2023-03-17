@@ -1,9 +1,14 @@
 from fastapi import FastAPI
 import json
 import pdfManager
+import requests
 
 app = FastAPI()
 pdfM = pdfManager.PdfManager()
+
+def get_sheet():
+    r=requests.get("/")
+    return r
 
 with open("dummy_sheet.json","r") as f:
     dummy_sheet=json.load(f)
