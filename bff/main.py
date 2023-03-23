@@ -1,11 +1,10 @@
 from fastapi import FastAPI
 import json
-import pdfManager
-import requests
+# import requests
 
 app = FastAPI()
-pdfM = pdfManager.PdfManager()
 
+# 本番用
 def get_sheet():
     r=requests.get("/")
     return r
@@ -13,12 +12,8 @@ def get_sheet():
 with open("dummy_sheet.json","r") as f:
     dummy_sheet=json.load(f)
 
+# dummy_sheetを返す用
 @app.get("/")
 async def root():
     return dummy_sheet
-
-
-@app.get("/getpdf")
-def get_pdf():
-    pdfM.get_pdf_from_web()
         
