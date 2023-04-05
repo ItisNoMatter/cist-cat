@@ -16,8 +16,9 @@ async def root():
     return dummy_sheet
  
 # 本番用エンドポイント
-@app.get("/getdata")
+@app.get("/json")
 async def get_sheet():
     pdfM.get_pdf_from_web()
-    print(jsonM.new_json())
+    sheet_data = jsonM.new_json()
+    print(sheet_data)
     return "成功"

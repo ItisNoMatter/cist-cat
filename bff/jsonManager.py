@@ -2,6 +2,7 @@ import datetime
 import pandas as pd
 import glob
 import tabula
+# import pdfplumber
 
 class JsonManager:
 
@@ -24,7 +25,8 @@ class JsonManager:
     # downloadフォルダ直下にあるPDFファイルの時刻表データを読み取る関数
     def toDataFrame(self):
 
-        file = glob.glob("/download/*")
+        file = glob.glob("./download/*")
+        print(file[0])
         #downloadフォルダの0番目のpdfをparseします
         dfs = tabula.read_pdf(f"{file[0]}", lattice=True, pages='all')[:2] #必要な部分のみ
         
