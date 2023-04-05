@@ -1,7 +1,13 @@
-FROM python:3.11.2-buster
-WORKDIR /app
-COPY ./docker/bff/requirements.txt .
-RUN /usr/local/bin/python -m pip install --upgrade pip \
-  && pip install --no-cache-dir -r requirements.txt
+# ベースイメージ
+FROM ubuntu:20.04
+# FROM python:3.11.2-buster
 
+#Pythonインストール
+RUN apt-get update && apt-get install -y python3.8 python3-pip
+
+WORKDIR /bff
+
+ADD ./docker/bff/requirements.txt /bff/
+RUN python3.8 -m pip install --no-cache-dir -r requirements.txt
 RUN pip install --no-cache-dir uvicorn
+RUN yum -y install java-1.8.0-openjdk

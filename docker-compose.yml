@@ -1,24 +1,44 @@
 version: '3'
+
 services:
+  # サービス名を指定
   bff:
+    # コンテナ名を指定
     container_name: bff
+    # dockerfileとpathの指定
     build:
-      context: .
       dockerfile: ./docker/bff/dockerfile
-    tty: true
-    volumes:
-      - ./bff:/app
-    ports:
-      - "9000:9000"
-    command: uvicorn main:app --reload --host 0.0.0.0 --port 9000
-  pdf-parser:
-    container_name: pdf-parser
-    build:
       context: .
-      dockerfile: ./timetable-parser/docker/Dockerfile
     tty: true
     volumes:
-      - ./timetable-parser:/app
+      - type: volume
+        source: cist-cat-bff-volume
+        target: /bff/download
+      - type: bind
+        source: ./bff
+        target: /bff
+    # ホストマシンのポート19000を、docker内のポート9000にマッピングする
     ports:
-      - "8000:8000"
-    command: uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+      - "19000:9000"
+    # ビルトインサーバーの起動
+    command: uvicorn main:app --reload --host 0.0.0.0 --port 9000
+
+# データを永続化するためにvolumeを作成する
+volumes:
+  cist-cat-bff-volume:
+
+
+
+
+  # 以下は使用しないサービスとする  
+  # pdf-parser:
+  #   container_name: pdf-parser
+  #   build:
+  #     context: .
+  #     dockerfile: ./timetable-parser/docker/Dockerfile
+  #   tty: true
+  #   volumes:
+  #     - ./timetable-parser:/app
+  #   ports:
+  #     - "8000:8000"
+  #   command: uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
