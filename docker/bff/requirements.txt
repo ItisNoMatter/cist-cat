@@ -1,2 +1,7 @@
 fastapi==0.92.0
-requests==2.28
+pandas==1.5.3
+tabula==1.0.5
+tabula-py==2.7.0
+requests==2.28.2
+pdfminer.six==20221105
+beautifulsoup4==4.9.3
