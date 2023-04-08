@@ -1,7 +1,23 @@
-FROM python:3.11.2-buster
-WORKDIR /app
-COPY ./docker/bff/requirements.txt .
-RUN /usr/local/bin/python -m pip install --upgrade pip \
-  && pip install --no-cache-dir -r requirements.txt
+# ベースイメージ
+FROM ubuntu:20.04
 
+# javaのインストール
+RUN apt-get update \
+&& apt-get upgrade -y \
+&& apt-get install -y --no-install-recommends bash \
+&& apt-get install -y --no-install-recommends unzip \
+&& apt-get install -y --no-install-recommends curl \
+&& apt-get install -y --no-install-recommends openjdk-8-jre
+# Pythonのインストール
+RUN apt-get update && apt-get install -y python3.8 python3-pip
+
+# ワーキングディレクトリの設定
+WORKDIR /bff
+
+# 設定ファイルのインストール
+ADD ./docker/bff/requirements.txt /bff/
+RUN python3.8 -m pip install --no-cache-dir -r requirements.txt
 RUN pip install --no-cache-dir uvicorn
+
+#Javaの環境変数設定
+ENV JAVA_HOME="/usr/lib/jvm/java-1.8-openjdk"
