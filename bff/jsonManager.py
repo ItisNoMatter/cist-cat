@@ -10,16 +10,16 @@ class JsonManager:
     def new_json(self):
         dicts = []
         for df in self.toDataFrame():
-            key_list = ["bus stations"]
+            key_list = ["bus stations"] #busに番号を振ってる
             contents_list = [list(df.columns)]
 
             for i in range(len(df)):
                 key_list.append(f"bus{i}")
-                contents_list.append(df.iloc[i].tolist())
+                contents_list.append(df.iloc[i].tolist()) #iloc[]の中に時刻が入ってる
 
             dicts.append(dict(zip(key_list, contents_list)))
         
-        json_dict = {"to cist": dicts[0], "to chitose station": dicts[1], "created at": datetime.datetime.now().strftime("%Y-%m-%d %H:%M")}
+        json_dict = { "created at": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),"outbound": dicts[0], "inbound": dicts[1]}
         return json_dict
     
     # downloadフォルダ直下にあるPDFファイルの時刻表データを読み取る関数
