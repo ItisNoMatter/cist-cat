@@ -15,7 +15,7 @@ class JsonManager:
 
             for i in range(len(df)):
                 key_list.append(f"bus{i}")
-                contents_list.append(df.iloc[i].tolist()) #iloc[]の中に時刻が入ってる
+                contents_list.append(df.iloc[i].tolist())#iloc[]の中に時刻が入ってる
 
             dicts.append(dict(zip(key_list, contents_list)))
         
