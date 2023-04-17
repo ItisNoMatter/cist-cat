@@ -12,10 +12,11 @@ class JsonManager:
         for df in self.toDataFrame():
             key_list = ["bus stations"] #busに番号を振ってる
             contents_list = [list(df.columns)]
+            station_list = ["chitose","minami-chitose","lab","main"]
 
             for i in range(len(df)):
                 key_list.append(f"bus{i}")
-                contents_list.append(df.iloc[i].tolist())#iloc[]の中に時刻が入ってる
+                contents_list.append(df.iloc[i].tolist()) #iloc[]の中に時刻が入ってる
 
             dicts.append(dict(zip(key_list, contents_list)))
         
