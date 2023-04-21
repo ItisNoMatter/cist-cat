@@ -9,16 +9,23 @@ class JsonManager:
     # json形式に整形する関数
     def new_json(self):
         dicts = []
+        content_list =[]
+        station_list = ["chitose","minami-chitose","lab","main"]
+
+        for i,p in enumerate(station_list):
+            print(i,p)
+
         for df in self.toDataFrame():
             key_list = ["bus stations"] #busに番号を振ってる
             timeschedule_list = [list(df.columns)]
-            station_list = ["chitose","minami-chitose","lab","main"]
 
             for i in range(len(df)):
                 key_list.append(f"bus{i}")
                 timeschedule_list.append(df.iloc[i].tolist()) #iloc[]の中に時刻が入ってる
+                
+                content_list.append(dict(zip(station_list,timeschedule_list[i])))
 
-            dicts.append(dict(zip(key_list, timeschedule_list)))
+            dicts.append(dict(zip(key_list, content_list)))
         
         json_dict = { "created at": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),"outbound": dicts[0], "inbound": dicts[1]}
         return json_dict
