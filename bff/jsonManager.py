@@ -12,9 +12,6 @@ class JsonManager:
         content_list =[]
         station_list = ["chitose","minami-chitose","lab","main","remark",]
 
-        for i,p in enumerate(station_list):
-            print(i,p)
-
         for df in self.toDataFrame():
             key_list = ["bus stations"] #busに番号を振ってる
             timeschedule_list = [list(df.columns)]
