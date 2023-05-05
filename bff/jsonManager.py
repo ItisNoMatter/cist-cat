@@ -10,7 +10,7 @@ class JsonManager:
     def new_json(self):
         dicts = []
         content_list =[]
-        station_list = ["chitose","minami-chitose","lab","main"]
+        station_list = ["chitose","minami-chitose","lab","main","remark",]
 
         for i,p in enumerate(station_list):
             print(i,p)
@@ -23,7 +23,7 @@ class JsonManager:
                 key_list.append(f"bus{i}")
                 timeschedule_list.append(df.iloc[i].tolist()) #iloc[]の中に時刻が入ってる
                 
-                content_list.append(dict(zip(station_list,timeschedule_list[i])))
+                content_list.append(dict(zip(station_list, timeschedule_list[i] + ["任意の値"])))
 
             dicts.append(dict(zip(key_list, content_list)))
         
@@ -35,6 +35,7 @@ class JsonManager:
                 }
             }
         }
+
         return json_dict
     
     # downloadフォルダ直下にあるPDFファイルの時刻表データを読み取る関数
