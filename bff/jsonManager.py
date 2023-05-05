@@ -27,7 +27,14 @@ class JsonManager:
 
             dicts.append(dict(zip(key_list, content_list)))
         
-        json_dict = {"sheet":{ "created at": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),"timetable":{"outbound": [dicts[0]], "inbound": [dicts[1]]}}}
+        json_dict = {"sheet":{
+             "created at": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
+             "timetable":{
+                 "outbound": [dicts[0]],
+                 "inbound": [dicts[1]]
+                }
+            }
+        }
         return json_dict
     
     # downloadフォルダ直下にあるPDFファイルの時刻表データを読み取る関数
