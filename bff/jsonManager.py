@@ -8,17 +8,14 @@ class JsonManager:
 
     # json形式に整形する関数
     def new_json(self):
-        dicts = []
-        content_list =[]
+        outbound_list = []
+        inbound_list = []
         station_list = ["chitose","minami-chitose","lab","main","remark",]
 
         for df in self.toDataFrame():
-            key_list = ["bus stations"] #busに番号を振ってる
             timeschedule_list = [list(df.columns)]
 
             for i in range(len(df)):
-                key_list.append(f"bus{i}")
-                
                 row = df.iloc[i].tolist()  # dfのi番目の行をリスト化
 
                 timeschedule_list.append(row)  # timeschedule_listに行を追加          
@@ -38,6 +35,7 @@ class JsonManager:
                     remark_bits += "0"
 
                     row.append(remark_bits)
+                    direction = 0
 
                 else:   # 復路の時
              # 5bit表記に変換
@@ -54,16 +52,19 @@ class JsonManager:
                     remark_bits += "0" if row[-1] == 1 else "1"
 
                     row[-1] = remark_bits
-           
-                content_list.append(dict(zip(station_list, row)))
+                    direction = 1
 
-            dicts.append(dict(zip(key_list, content_list)))
+                if direction == 0:      # 往路の時
+                    outbound_list.append(dict(zip(station_list, row)))
+                if direction == 1:      #復路の時
+                    inbound_list.append(dict(zip(station_list, row)))
+
         
         json_dict = {"sheet":{
              "created at": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
              "timetable":{
-                 "outbound": [dicts[0]],
-                 "inbound": [dicts[1]]
+                 "outbound": outbound_list,
+                 "inbound": inbound_list
                 }
             }
         }
