@@ -10,7 +10,7 @@ class JsonManager:
     def new_json(self):
         outbound_list = []
         inbound_list = []
-        station_list = ["chitose","minami-chitose","lab","main","remark",]
+        station_list = ["chitose","minami-chitose","lab","main",]
 
         for df in self.toDataFrame():
             timeschedule_list = [list(df.columns)]
@@ -55,9 +55,9 @@ class JsonManager:
                     direction = 1
 
                 if direction == 0:      # 往路の時
-                    outbound_list.append(dict(zip(station_list, row)))
+                    outbound_list.append(dict(zip(station_list + ["remark"], row)))
                 if direction == 1:      #復路の時
-                    inbound_list.append(dict(zip(station_list, row)))
+                    inbound_list.append(dict(zip(station_list[::-1] + ["remark"], row)))
 
         
         json_dict = {"sheet":{
