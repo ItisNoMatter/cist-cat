@@ -18,9 +18,44 @@ class JsonManager:
 
             for i in range(len(df)):
                 key_list.append(f"bus{i}")
-                timeschedule_list.append(df.iloc[i].tolist()) #iloc[]の中に時刻が入ってる
                 
-                content_list.append(dict(zip(station_list, timeschedule_list[i] + ["任意の値"])))
+                row = df.iloc[i].tolist()  # dfのi番目の行をリスト化
+
+                timeschedule_list.append(row)  # timeschedule_listに行を追加          
+                
+                if len(row) == 4:   # 往路の時
+            # 5bit表記に変換
+                    remark_bits = "0b"
+            # 本部棟に発着しない
+                    remark_bits += "1" if row[3] == "-" else "0"
+             # 研究棟に発着しない
+                    remark_bits += "1" if row[2] == "-" else "0"
+            # 南千歳駅に発着しない
+                    remark_bits += "1" if row[1] == "-" else "0"
+            # 千歳駅に発着しない
+                    remark_bits += "1" if row[0] == "-" else "0"
+            # 往路のため必ず"0"を入れる
+                    remark_bits += "0"
+
+                    row.append(remark_bits)
+
+                else:   # 復路の時
+             # 5bit表記に変換
+                    remark_bits = "0b"
+            # 本部棟に発着しない
+                    remark_bits += "1" if row[0] == "-" else "0"
+            # 研究棟に発着しない
+                    remark_bits += "1" if row[1] == "-" else "0"
+            # 南千歳駅に発着しない
+                    remark_bits += "1" if row[2] == "-" else "0"
+            # 千歳駅に発着しない
+                    remark_bits += "1" if row[3] == "-" else "0"
+            # 復路のバス乗り場
+                    remark_bits += "0" if row[-1] == 1 else "1"
+
+                    row[-1] = remark_bits
+           
+                content_list.append(dict(zip(station_list, row)))
 
             dicts.append(dict(zip(key_list, content_list)))
         
