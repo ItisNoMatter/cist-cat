@@ -11,13 +11,23 @@ RUN apt-get update \
 # Pythonのインストール
 RUN apt-get update && apt-get install -y python3.8 python3-pip
 
+# 各種各引用コマンドインストール
+RUN apt-get install -y curl iputils-ping procps vim tree
+
 # ワーキングディレクトリの設定
 WORKDIR /bff
 
 # 設定ファイルのインストール
-ADD ./docker/bff/requirements.txt /bff/
+ADD ./docker/bff/requirements.txt .
 RUN python3.8 -m pip install --no-cache-dir -r requirements.txt
 RUN pip install --no-cache-dir uvicorn
 
 #Javaの環境変数設定
 ENV JAVA_HOME="/usr/lib/jvm/java-1.8-openjdk"
+
+# ソースコードをコピー
+COPY bff/ /bff/
+
+# uvicornを起動
+# 8000番ポートからアクセスできる
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]

@@ -2,7 +2,6 @@ import datetime
 import pandas as pd
 import glob
 import tabula
-# import pdfplumber
 
 class JsonManager:
 

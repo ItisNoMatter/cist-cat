@@ -20,5 +20,4 @@ async def root():
 async def get_sheet():
     pdfM.get_pdf_from_web()
     sheet_data = jsonM.new_json()
-    print(sheet_data)
-    return "成功"
+    return sheet_data
