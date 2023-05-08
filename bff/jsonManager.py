@@ -8,18 +8,67 @@ class JsonManager:
 
     # json形式に整形する関数
     def new_json(self):
-        dicts = []
+        outbound_list = []
+        inbound_list = []
+        station_list = ["chitose","minami-chitose","lab","main",]
+
         for df in self.toDataFrame():
-            key_list = ["bus stations"]
-            contents_list = [list(df.columns)]
+            timeschedule_list = [list(df.columns)]
 
             for i in range(len(df)):
-                key_list.append(f"bus{i}")
-                contents_list.append(df.iloc[i].tolist())
+                row = df.iloc[i].tolist()  # dfのi番目の行をリスト化
 
-            dicts.append(dict(zip(key_list, contents_list)))
+                timeschedule_list.append(row)  # timeschedule_listに行を追加          
+                
+                if len(row) == 4:   # 往路の時
+            # 5bit表記に変換
+                    remark_bits = "0b"
+            # 本部棟に発着しない
+                    remark_bits += "1" if row[3] == "-" else "0"
+             # 研究棟に発着しない
+                    remark_bits += "1" if row[2] == "-" else "0"
+            # 南千歳駅に発着しない
+                    remark_bits += "1" if row[1] == "-" else "0"
+            # 千歳駅に発着しない
+                    remark_bits += "1" if row[0] == "-" else "0"
+            # 往路のため必ず"0"を入れる
+                    remark_bits += "0"
+
+                    row.append(remark_bits)
+                    direction = 0
+
+                else:   # 復路の時
+             # 5bit表記に変換
+                    remark_bits = "0b"
+            # 本部棟に発着しない
+                    remark_bits += "1" if row[0] == "-" else "0"
+            # 研究棟に発着しない
+                    remark_bits += "1" if row[1] == "-" else "0"
+            # 南千歳駅に発着しない
+                    remark_bits += "1" if row[2] == "-" else "0"
+            # 千歳駅に発着しない
+                    remark_bits += "1" if row[3] == "-" else "0"
+            # 復路のバス乗り場
+                    remark_bits += "0" if row[-1] == 1 else "1"
+
+                    row[-1] = remark_bits
+                    direction = 1
+
+                if direction == 0:      # 往路の時
+                    outbound_list.append(dict(zip(station_list + ["remark"], row)))
+                if direction == 1:      #復路の時
+                    inbound_list.append(dict(zip(station_list[::-1] + ["remark"], row)))
+
         
-        json_dict = {"to cist": dicts[0], "to chitose station": dicts[1], "created at": datetime.datetime.now().strftime("%Y-%m-%d %H:%M")}
+        json_dict = {"sheet":{
+             "created at": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
+             "timetable":{
+                 "outbound": outbound_list,
+                 "inbound": inbound_list
+                }
+            }
+        }
+
         return json_dict
     
     # downloadフォルダ直下にあるPDFファイルの時刻表データを読み取る関数
