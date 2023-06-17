@@ -14,24 +14,8 @@ services:
       - type: bind
         source: ./bff
         target: /bff
-    # ホストマシンのポート19000を、docker内のポート9000にマッピングする
+    # ホストマシンのポート8080を、docker内のポート8080にマッピングする
     ports:
       - "8080:8080"
     # ビルトインサーバーの起動
     command: uvicorn main:app --reload --host 0.0.0.0 --port 8080
-
-
-
-
-  # 以下は使用しないサービスとする  
-  # pdf-parser:
-  #   container_name: pdf-parser
-  #   build:
-  #     context: .
-  #     dockerfile: ./timetable-parser/docker/Dockerfile
-  #   tty: true
-  #   volumes:
-  #     - ./timetable-parser:/app
-  #   ports:
-  #     - "8000:8000"
-  #   command: uvicorn app.main:app --reload --host 0.0.0.0 --port 8000

@@ -24,10 +24,3 @@ RUN pip install --no-cache-dir uvicorn
 
 #Javaの環境変数設定
 ENV JAVA_HOME="/usr/lib/jvm/java-1.8-openjdk"
-
-# ソースコードをコピー
-COPY bff/ /bff/
-
-# uvicornを起動
-# 8000番ポートからアクセスできる
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
