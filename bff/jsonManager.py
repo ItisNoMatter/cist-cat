@@ -10,8 +10,11 @@ class JsonManager:
         outbound_list = []
         inbound_list = []
         station_list = ["chitose","minami-chitose","lab","main",]
+        df_num = 0
 
         for df in self.toDataFrame():
+            df_num += 1
+            print(df_num)
             timeschedule_list = [list(df.columns)]
 
             for i in range(len(df)):
@@ -19,7 +22,8 @@ class JsonManager:
 
                 timeschedule_list.append(row)  # timeschedule_listに行を追加          
                 
-                if len(row) == 4:   # 往路の時
+                #dfに番号をつけてinboundとoutboundを切り替える応急処置
+                if df_num == 1:   # 往路の時
             # 5bit表記に変換
                     remark_bits = "0b"
             # 本部棟に発着しない
@@ -74,7 +78,6 @@ class JsonManager:
     def toDataFrame(self):
 
         file = glob.glob("./download/*")
-        print(file[0])
         #downloadフォルダの0番目のpdfをparseします
         dfs = tabula.read_pdf(f"{file[0]}", lattice=True, pages='all')[:2] #必要な部分のみ
         
@@ -82,4 +85,6 @@ class JsonManager:
             dfs[i] = dfs[i].dropna(axis = 1)
             dfs[i] = pd.DataFrame(dfs[i])
 
+        # print(dfs[1])
         return dfs
+
