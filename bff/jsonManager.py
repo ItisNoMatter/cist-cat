@@ -9,7 +9,7 @@ class JsonManager:
     def new_json(self):
         outbound_list = []
         inbound_list = []
-        station_list = ["chitose","minami-chitose","lab","main",]
+        station_list = ["chitose","minami_chitose","lab","main",]
         df_num = 0
 
         for df in self.toDataFrame():
