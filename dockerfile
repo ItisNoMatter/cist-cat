@@ -18,7 +18,7 @@ RUN apt-get install -y curl iputils-ping procps vim tree
 WORKDIR /bff
 
 # 設定ファイルのインストール
-COPY docker/bff/requirements.txt /bff/
+COPY /requirements.txt /bff/
 RUN python3.8 -m pip install --no-cache-dir -r requirements.txt
 RUN pip install --no-cache-dir uvicorn
 

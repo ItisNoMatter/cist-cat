@@ -7,7 +7,7 @@ services:
     container_name: bff
     # dockerfileとpathの指定
     build:
-      dockerfile: ./docker/bff/dockerfile
+      dockerfile: dockerfile
       context: .
     tty: true
     volumes:
