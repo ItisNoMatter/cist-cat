@@ -38,6 +38,7 @@ class JsonManager:
                     remark_bits += "0"
 
                     row.append(remark_bits)
+                    diagram = [row[0],row[1],row[2],row[3],row[-1]]
                     direction = 0
 
                 else:   # 復路の時
@@ -54,15 +55,15 @@ class JsonManager:
             # 復路のバス乗り場
                     remark_bits += "0" if row[-1] == 1 else "1"
 
-                    row[-1] = remark_bits
+                    row.append(remark_bits)
+                    diagram = [row[0],row[1],row[2],row[3],row[-1]]
                     direction = 1
 
                 if direction == 0:      # 往路の時
-                    outbound_list.append(dict(zip(station_list + ["remark"], row)))
-                if direction == 1:      #復路の時
-                    inbound_list.append(dict(zip(station_list[::-1] + ["remark"], row)))
+                    outbound_list.append(dict(zip(station_list + ["remark"], diagram)))
+                if direction == 1:      #復路の時   
+                    inbound_list.append(dict(zip(station_list[::-1] + ["remark"], diagram)))
 
-        
         json_dict = {"sheet":{
              "created at": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
              "timetable":{
@@ -78,6 +79,10 @@ class JsonManager:
     def toDataFrame(self):
 
         file = glob.glob("./download/*")
+        # 通常期間テスト用
+        # file = glob.glob("./test-usually-timetable/*")
+        # 休業期間テスト用
+        # file = glob.glob("./test-vacation-timetable/*")
         #downloadフォルダの0番目のpdfをparseします
         dfs = tabula.read_pdf(f"{file[0]}", lattice=True, pages='all')[:2] #必要な部分のみ
         

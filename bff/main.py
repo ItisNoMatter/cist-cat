@@ -28,6 +28,8 @@ async def root():
 # 本番用エンドポイント
 @app.get("/json")
 async def get_sheet():
-    # pdfM.get_pdf_from_web()
+    pdfM.get_pdf_from_web()
     sheet_data = jsonM.new_json()
     return sheet_data
+
+# http://127.0.0.1:5500/index.html
