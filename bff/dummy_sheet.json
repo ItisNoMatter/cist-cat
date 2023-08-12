@@ -1,18 +1,200 @@
 {
-    "sheet":{
-        "created at": {"year":2023, "month":3, "day":28},
-        "timetable":{
-            "outbound":[
-                {"chitose":{"hour":7,"minute":14},"minami_chitose":{"hour":7,"minute":24},"lab":{"hour":7,"minute":34},"main":{"hour":7,"minute":44},"remark":[0]},
-                {"chitose":{"hour":8,"minute":14},"minami_chitose":{"hour":8,"minute":24},"lab":{"hour":8,"minute":34},"main":{"hour":8,"minute":44},"remark":[1]},
-                {"chitose":{"hour":9,"minute":14},"minami_chitose":{"hour":9,"minute":24},"lab":{"hour":9,"minute":34},"main":{"hour":9,"minute":44},"remark":[0]}
-            ],
-            "inbound":[
-                {"main":{"hour":17,"minute":14},"lab":{"hour":17,"minute":24},"minami_chitose":{"hour":17,"minute":34},"chitose":{"hour":17,"minute":44},"remark":[0]},
-                {"main":{"hour":18,"minute":14},"lab":{"hour":18,"minute":24},"minami_chitose":{"hour":18,"minute":34},"chitose":{"hour":18,"minute":44},"remark":[5]},
-                {"main":{"hour":19,"minute":14},"lab":{"hour":19,"minute":24},"minami_chitose":{"hour":19,"minute":34},"chitose":{"hour":19,"minute":44},"remark":[7, 8]}
-            ]
-
-        }
+    "sheet": {
+      "created at": "2023-08-12 17:18",
+      "timetable": {
+        "outbound": [
+          {
+            "chitose": "8:00",
+            "minami_chitose": "8:10",
+            "lab": "8:18",
+            "main": "8:21",
+            "remark": "0b00000"
+          },
+          {
+            "chitose": "8:30",
+            "minami_chitose": "8:40",
+            "lab": "8:48",
+            "main": "8:51",
+            "remark": "0b00000"
+          },
+          {
+            "chitose": "9:20",
+            "minami_chitose": "9:30",
+            "lab": "9:38",
+            "main": "9:41",
+            "remark": "0b00000"
+          },
+          {
+            "chitose": "10:15",
+            "minami_chitose": "10:25",
+            "lab": "10:33",
+            "main": "10:36",
+            "remark": "0b00000"
+          },
+          {
+            "chitose": "10:45",
+            "minami_chitose": "10:55",
+            "lab": "11:03",
+            "main": "11:06",
+            "remark": "0b00000"
+          },
+          {
+            "chitose": "11:40",
+            "minami_chitose": "11:50",
+            "lab": "11:58",
+            "main": "12:01",
+            "remark": "0b00000"
+          },
+          {
+            "chitose": "12:15",
+            "minami_chitose": "12:25",
+            "lab": "12:33",
+            "main": "12:36",
+            "remark": "0b00000"
+          },
+          {
+            "chitose": "12:45",
+            "minami_chitose": "12:55",
+            "lab": "13:03",
+            "main": "13:06",
+            "remark": "0b00000"
+          },
+          {
+            "chitose": "13:28",
+            "minami_chitose": "13:38",
+            "lab": "13:46",
+            "main": "13:49",
+            "remark": "0b00000"
+          },
+          {
+            "chitose": "14:15",
+            "minami_chitose": "14:25",
+            "lab": "14:33",
+            "main": "14:36",
+            "remark": "0b00000"
+          },
+          {
+            "chitose": "15:18",
+            "minami_chitose": "15:28",
+            "lab": "15:36",
+            "main": "15:39",
+            "remark": "0b00000"
+          },
+          {
+            "chitose": "16:15",
+            "minami_chitose": "16:25",
+            "lab": "16:33",
+            "main": "16:36",
+            "remark": "0b00000"
+          }
+        ],
+        "inbound": [
+          {
+            "main": "10:45",
+            "lab": "10:48",
+            "minami_chitose": "10:56",
+            "chitose": "11:06",
+            "remark": "0b00001"
+          },
+          {
+            "main": "11:25",
+            "lab": "11:28",
+            "minami_chitose": "11:36",
+            "chitose": "11:46",
+            "remark": "0b00001"
+          },
+          {
+            "main": "12:22",
+            "lab": "12:25",
+            "minami_chitose": "12:33",
+            "chitose": "12:43",
+            "remark": "0b00001"
+          },
+          {
+            "main": "13:05",
+            "lab": "13:08",
+            "minami_chitose": "13:16",
+            "chitose": "13:26",
+            "remark": "0b00001"
+          },
+          {
+            "main": "14:00",
+            "lab": "14:03",
+            "minami_chitose": "14:11",
+            "chitose": "14:21",
+            "remark": "0b00001"
+          },
+          {
+            "main": "14:55",
+            "lab": "14:58",
+            "minami_chitose": "15:06",
+            "chitose": "15:16",
+            "remark": "0b00001"
+          },
+          {
+            "main": "16:00",
+            "lab": "16:03",
+            "minami_chitose": "16:11",
+            "chitose": "16:21",
+            "remark": "0b00001"
+          },
+          {
+            "main": "16:45",
+            "lab": "16:48",
+            "minami_chitose": "16:56",
+            "chitose": "17:06",
+            "remark": "0b00001"
+          },
+          {
+            "main": "17:17",
+            "lab": "17:20",
+            "minami_chitose": "17:28",
+            "chitose": "17:38",
+            "remark": "0b00001"
+          },
+          {
+            "main": "18:00",
+            "lab": "18:03",
+            "minami_chitose": "18:11",
+            "chitose": "18:21",
+            "remark": "0b00001"
+          },
+          {
+            "main": "18:30",
+            "lab": "18:33",
+            "minami_chitose": "18:41",
+            "chitose": "18:51",
+            "remark": "0b00001"
+          },
+          {
+            "main": "19:04",
+            "lab": "19:07",
+            "minami_chitose": "19:15",
+            "chitose": "19:25",
+            "remark": "0b00001"
+          },
+          {
+            "main": "19:29",
+            "lab": "19:32",
+            "minami_chitose": "19:40",
+            "chitose": "19:50",
+            "remark": "0b00001"
+          },
+          {
+            "main": "20:19",
+            "lab": "20:22",
+            "minami_chitose": "20:30",
+            "chitose": "20:40",
+            "remark": "0b00001"
+          },
+          {
+            "main": "21:08",
+            "lab": "21:11",
+            "minami_chitose": "21:19",
+            "chitose": "21:29",
+            "remark": "0b00001"
+          }
+        ]
+      }
     }
-}
+  }
